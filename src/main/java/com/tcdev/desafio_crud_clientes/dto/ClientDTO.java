@@ -18,6 +18,8 @@ public class ClientDTO {
         private Integer children;
         private Double income;
 
+        public ClientDTO() {}
+
         public ClientDTO(Client entity) {
             id = entity.getId();
             name = entity.getName();
@@ -59,5 +61,4 @@ public class ClientDTO {
         public Double getIncome() {
             return income;
         }
-
 }
