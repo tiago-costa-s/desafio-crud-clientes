@@ -1,6 +1,7 @@
 package com.tcdev.desafio_crud_clientes.controllers;
 
 import com.tcdev.desafio_crud_clientes.dto.ClientDTO;
+import com.tcdev.desafio_crud_clientes.entities.Client;
 import com.tcdev.desafio_crud_clientes.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,5 +38,11 @@ public class ClientController {
                 .buildAndExpand(dto.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(dto);
+    }
+
+    @PutMapping(value = "{id}")
+    public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto) {
+        dto = service.update(id, dto);
+        return ResponseEntity.ok(dto);
     }
 }
