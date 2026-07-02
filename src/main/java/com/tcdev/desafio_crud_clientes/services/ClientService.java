@@ -54,4 +54,10 @@ public class ClientService {
         entity = repository.save(entity);
         return new ClientDTO(entity);
     }
+
+    @Transactional
+    public void delete(Long id){
+        repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado id: " + id));
+        repository.deleteById(id);
+    }
 }
