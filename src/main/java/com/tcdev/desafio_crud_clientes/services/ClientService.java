@@ -42,4 +42,16 @@ public class ClientService {
         entity = repository.save(entity);
         return new ClientDTO(entity);
     }
+
+    @Transactional
+    public ClientDTO update(Long id, ClientDTO dto){
+        Client entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado id: " + id));
+        entity.setName(dto.getName());
+        entity.setCpf(dto.getCpf());
+        entity.setBirthDate(dto.getBirthDate());
+        entity.setChildren(dto.getChildren());
+        entity.setIncome(dto.getIncome());
+        entity = repository.save(entity);
+        return new ClientDTO(entity);
+    }
 }
