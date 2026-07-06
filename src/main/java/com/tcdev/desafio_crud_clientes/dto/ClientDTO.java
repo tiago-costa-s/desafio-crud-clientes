@@ -1,6 +1,7 @@
 package com.tcdev.desafio_crud_clientes.dto;
 
 import com.tcdev.desafio_crud_clientes.entities.Client;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 
 public class ClientDTO {
         private Long id;
+        @Valid
         @Size(min = 3, max = 80, message = "Nome precisa ter de 3 a 80 caracteres." )
         @NotBlank(message = "Campo requerido.")
         private String name;
